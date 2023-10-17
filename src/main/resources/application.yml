@@ -1,0 +1,43 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: GATEWAY-SERVICE
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+      routes:
+        - id: user-service
+          uri: "lb://USER-SERVICE"
+          predicates:
+            - Path=/api/v1/user/**
+
+
+        - id: draw-service
+          uri: "lb://DRAW-SERVICE"
+          predicates:
+            - Path=/api/v1/draw/**
+
+
+management:
+  endpoint:
+    web:
+      exposure:
+        include: health,beans,refresh
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+      instance:
+        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
