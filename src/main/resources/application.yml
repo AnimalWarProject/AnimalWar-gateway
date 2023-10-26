@@ -21,13 +21,14 @@ spring:
           uri: "lb://USER-SERVICE"
           predicates:
             - Path=/api/v1/user/**, /api/v1/auth/**
-
-
-
         - id: terrain-service
           uri: "lb://TERRAIN-SERVICE"
           predicates:
             - Path=/api/v1/terrain/**
+        - id: match-service
+          uri: "lb://MATCH-SERVICE"
+          predicates:
+            - Path=/api/v1/match/**
 
 
 management:
