@@ -20,12 +20,16 @@ spring:
         - id: user-service
           uri: "lb://USER-SERVICE"
           predicates:
-            - Path=/api/v1/user/**, /api/v1/auth/**
 
+            - Path=/api/v1/user/**, /api/v1/auth/** , /api/v1/rank/** , /api/v1/exchange/**
         - id: terrain-service
           uri: "lb://TERRAIN-SERVICE"
           predicates:
             - Path=/api/v1/terrain/**
+        - id: match-service
+          uri: "lb://MATCH-SERVICE"
+          predicates:
+            - Path=/api/v1/match/**
 
         - id: mix-service
           uri: "lb://MIX-SERVICE"
