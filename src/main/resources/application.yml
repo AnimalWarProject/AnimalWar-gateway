@@ -46,13 +46,11 @@ spring:
             - Path=/api/v1/inventory/**
 
 
-
-
-
         - id: terrain-service
           uri: "lb://TERRAIN-SERVICE"
           predicates:
             - Path=/api/v1/terrain/**
+
         - id: match-service
           uri: "lb://MATCH-SERVICE"
           predicates:
