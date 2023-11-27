@@ -53,6 +53,11 @@ spring:
           predicates:
             - Path=/api/v1/match/**
 
+        - id: match-service
+          uri: "lb://MATCH-SERVICE"
+          predicates:
+            - Path=/api/v1/skill/**
+
         - id: mix-service
           uri: "lb://MIX-SERVICE"
           predicates:
@@ -88,7 +93,15 @@ spring:
           predicates:
             - Path=/api/v1/upgrade/**
 
+        - id: BATTLE-SERVICE
+          uri: "lb://BATTLE-SERVICE"
+          predicates:
+            - Path=/api/v1/battle/**
 
+        - id: COMMUNITY-SERVICE
+          uri: "lb://COMMUNITY-SERVICE"
+          predicates:
+            - Path=/api/v1/post/**
 
 
 
